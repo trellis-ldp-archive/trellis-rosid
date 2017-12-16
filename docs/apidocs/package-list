@@ -1,0 +1,6 @@
+org.trellisldp.rosid.app
+org.trellisldp.rosid.app.auth
+org.trellisldp.rosid.app.config
+org.trellisldp.rosid.app.health
+org.trellisldp.rosid.common
+org.trellisldp.rosid.file

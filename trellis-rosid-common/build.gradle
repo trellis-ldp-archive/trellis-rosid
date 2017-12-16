@@ -1,0 +1,58 @@
+apply plugin: 'osgi'
+
+description = 'Trellis Rosid Common Module'
+
+ext {
+    moduleName = 'org.trellisldp.rosid.common'
+}
+
+dependencies {
+    api group: 'org.apache.commons', name: 'commons-rdf-api', version: commonsRdfVersion
+    api group: 'org.apache.servicemix.bundles', name: 'org.apache.servicemix.bundles.kafka-clients', version: kafkaVersion
+    api group: 'org.trellisldp', name: 'trellis-api', version: trellisVersion
+    api(group: 'org.apache.curator', name: 'curator-recipes', version: curatorVersion) {
+        exclude group: 'org.apache.zookeeper', module: 'zookeeper'
+    }
+
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: jacksonVersion
+    implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: jacksonVersion
+    implementation group: 'commons-codec', name: 'commons-codec', version: commonsCodecVersion
+    implementation group: 'commons-io', name: 'commons-io', version: commonsIoVersion
+    implementation group: 'org.apache.commons', name: 'commons-rdf-jena', version: commonsRdfVersion
+    implementation group: 'org.apache.jena', name: 'jena-osgi', version: jenaVersion
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+    implementation group: 'org.trellisldp', name: 'trellis-vocabulary', version: trellisVersion
+    implementation group: 'org.apache.zookeeper', name: 'zookeeper', version: zookeeperVersion
+
+    testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
+    testImplementation group: 'org.apache.curator', name: 'curator-test', version: curatorVersion
+    testImplementation group: 'org.apiguardian', name: 'apiguardian-api', version: apiguardianVersion
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: junitPlatformVersion
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitVersion
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: mockitoVersion
+    testImplementation group: 'org.awaitility', name: 'awaitility', version: awaitilityVersion
+}
+
+
+jar {
+    manifest {
+        description project.description
+        docURL project.docURL
+        vendor project.vendor
+        license project.license
+
+        instruction 'Automatic-Module-Name', moduleName
+        instruction 'Import-Package', '*'
+        instruction 'Export-Package', "${moduleName};version=${projectOsgiVersion}"
+    }
+}
+
+artifacts {
+    archives javadocJar
+    archives sourceJar
+    archives (file('build/resources/main/features.xml')) {
+        classifier 'features'
+        type 'xml'
+    }
+}
+

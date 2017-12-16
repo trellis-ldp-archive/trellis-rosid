@@ -1,0 +1,5 @@
+H modified "2017-09-05T13:49:58.417Z"^^<http://www.w3.org/2001/XMLSchema#dateTimeStamp> .
+TX .
+A <trellis:repository/testResource> <http://purl.org/dc/terms/title> "A title" <http://www.trellisldp.org/ns/trellis#PreferUserManaged> .
+A <trellis:repository/testResource> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/ldp#RDFSource> <http://www.trellisldp.org/ns/trellis#PreferServerManaged> .
+TC .

@@ -1,5 +1,7 @@
 rootProject.name = 'trellis-rosid'
 include ':trellis-rosid-common'
+include ':trellis-rosid-file'
 
 project(':trellis-rosid-common').projectDir = "$rootDir/trellis-rosid-common" as File
+project(':trellis-rosid-file').projectDir = "$rootDir/trellis-rosid-file" as File
 

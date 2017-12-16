@@ -1,0 +1,45 @@
+H modified "2017-01-15T09:14:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTimeStamp> .
+TX .
+A <trellis:repository/ldprs> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/ldp#RDFSource> <http://www.trellisldp.org/ns/trellis#PreferServerManaged> .
+A <trellis:repository/resource> <http://purl.org/dc/terms/title> "Some title"@en <http://www.trellisldp.org/ns/trellis#PreferUserManaged> .
+A <trellis:repository/resource> <http://purl.org/dc/terms/description> "A longer description"@en <http://www.trellisldp.org/ns/trellis#PreferUserManaged> .
+A <trellis:repository/resource> <http://purl.org/dc/terms/subject> <http://example.org/subject/foo> <http://www.trellisldp.org/ns/trellis#PreferUserManaged> .
+A <trellis:repository/resource> <http://purl.org/dc/terms/subject> <http://example.org/subject/bar> <http://www.trellisldp.org/ns/trellis#PreferUserManaged> .
+TC .
+H modified "2017-01-27T12:35:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTimeStamp> .
+TX .
+A <trellis:repository/resource> <http://purl.org/dc/terms/spatial> <http://example.org/location/foo> <http://www.trellisldp.org/ns/trellis#PreferUserManaged> .
+A <trellis:repository/resource> <http://purl.org/dc/terms/extent> "27 Hectares" <http://www.trellisldp.org/ns/trellis#PreferUserManaged> .
+TC .
+H modified "2017-02-02T05:20:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTimeStamp> .
+TX .
+D <trellis:repository/resource> <http://purl.org/dc/terms/title> "Some title"@en <http://www.trellisldp.org/ns/trellis#PreferUserManaged> .
+D <trellis:repository/resource> <http://purl.org/dc/terms/description> "A longer description"@en <http://www.trellisldp.org/ns/trellis#PreferUserManaged> .
+D <trellis:repository/resource> <http://purl.org/dc/terms/subject> <http://example.org/subject/foo> <http://www.trellisldp.org/ns/trellis#PreferUserManaged> .
+D <trellis:repository/resource> <http://purl.org/dc/terms/subject> <http://example.org/subject/bar> <http://www.trellisldp.org/ns/trellis#PreferUserManaged> .
+D <trellis:repository/resource> <http://purl.org/dc/terms/spatial> <http://example.org/location/foo> <http://www.trellisldp.org/ns/trellis#PreferUserManaged> .
+D <trellis:repository/resource> <http://purl.org/dc/terms/extent> "27 Hectares" <http://www.trellisldp.org/ns/trellis#PreferUserManaged> .
+A <trellis:repository/resource> <http://www.w3.org/2004/02/skos/core#prefLabel> "A resource"@en <http://www.trellisldp.org/ns/trellis#PreferUserManaged> .
+A <trellis:repository/resource> <http://purl.org/dc/terms/isPartOf> <trellis:repository/collection> <http://www.trellisldp.org/ns/trellis#PreferUserManaged> .
+TC .
+H modified
+TX .
+A <ex:subject> <ex:predicate> <ex:object1> .
+TC .
+H modified 
+TX .
+A <ex:subject> <ex:predicate> <ex:object2> .
+TC .
+H modified .
+TX .
+A <ex:subject> <ex:predicate> <ex:object3> .
+TC .
+H modified <ex:foo> .
+TX .
+A <ex:subject> <ex:predicate> <ex:object4> .
+TC .
+H modified "2017-02-10T15:12:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTimeStamp> .
+TX .
+D <trellis:repository/resource> <http://purl.org/dc/terms/isPartOf> <trellis:repository/collection> <http://www.trellisldp.org/ns/trellis#PreferUserManaged> .
+A <ex:foo> an unreadable entry
+TC .

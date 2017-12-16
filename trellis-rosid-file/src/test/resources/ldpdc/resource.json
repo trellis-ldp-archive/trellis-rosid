@@ -1,0 +1,11 @@
+{
+    "@context" : "http://www.trellisldp.org/ns/trellisresource.jsonld" ,
+    "@id" : "trellis:repository/ldpdc" ,
+    "@type" : "http://www.w3.org/ns/ldp#DirectContainer" ,
+    "membershipResource" : "trellis:repository/container" ,
+    "hasMemberRelation" : "http://purl.org/dc/terms/subject" ,
+    "generatedAtTime" : [ "2017-02-15T10:05:00Z", "2017-02-15T11:15:00Z" ] ,
+    "type" : [ "http://example.org/types/Foo", "http://example.org/types/Bar" ] ,
+    "inbox" : "http://example.org/receiver/inbox" ,
+    "modified" : "2017-03-01T15:15:00Z"
+}

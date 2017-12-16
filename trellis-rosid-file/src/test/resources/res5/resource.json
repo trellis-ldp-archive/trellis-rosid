@@ -1,0 +1,8 @@
+{
+    "@context" : "http://www.trellisldp.org/ns/trellisresource.jsonld" ,
+    "@id" : "trellis:repository/ldprs" ,
+    "@type" : "http://www.w3.org/ns/ldp#RDFSource" ,
+    "type" : [ "http://example.org/types/Foo", "http://example.org/types/Bar" ] ,
+    "inbox" : "http://example.org/receiver/inbox" ,
+    "modified" : "2017-02-15T11:15:00Z"
+}

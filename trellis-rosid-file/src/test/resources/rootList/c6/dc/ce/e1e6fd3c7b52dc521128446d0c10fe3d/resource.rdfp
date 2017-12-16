@@ -1,0 +1,15 @@
+H modified "2017-09-05T13:49:58.012Z"^^<http://www.w3.org/2001/XMLSchema#dateTimeStamp> .
+TX .
+A <trellis:> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/ldp#Container> <http://www.trellisldp.org/ns/trellis#PreferServerManaged> .
+A <trellis:#auth> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/auth/acl#Authorization> <http://www.trellisldp.org/ns/trellis#PreferAccessControl> .
+A <trellis:#auth> <http://www.w3.org/ns/auth/acl#mode> <http://www.w3.org/ns/auth/acl#Read> <http://www.trellisldp.org/ns/trellis#PreferAccessControl> .
+A <trellis:#auth> <http://www.w3.org/ns/auth/acl#mode> <http://www.w3.org/ns/auth/acl#Write> <http://www.trellisldp.org/ns/trellis#PreferAccessControl> .
+A <trellis:#auth> <http://www.w3.org/ns/auth/acl#mode> <http://www.w3.org/ns/auth/acl#Control> <http://www.trellisldp.org/ns/trellis#PreferAccessControl> .
+A <trellis:#auth> <http://www.w3.org/ns/auth/acl#accessTo> <trellis:repository> <http://www.trellisldp.org/ns/trellis#PreferAccessControl> .
+A <trellis:#auth> <http://www.w3.org/ns/auth/acl#agentClass> <http://xmlns.com/foaf/0.1/Agent> <http://www.trellisldp.org/ns/trellis#PreferAccessControl> .
+A <trellis:> <http://www.w3.org/ns/prov#wasGeneratedBy> <trellis:bnode/7717707e-5b29-4fc6-a388-481a7ec99a0801ff7a30-c5b7-4d4e-b14f-c7c61076446c> <http://www.trellisldp.org/ns/trellis#PreferAudit> .
+A <trellis:bnode/7717707e-5b29-4fc6-a388-481a7ec99a0801ff7a30-c5b7-4d4e-b14f-c7c61076446c> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/prov#Activity> <http://www.trellisldp.org/ns/trellis#PreferAudit> .
+A <trellis:bnode/7717707e-5b29-4fc6-a388-481a7ec99a0801ff7a30-c5b7-4d4e-b14f-c7c61076446c> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://www.w3.org/ns/activitystreams#Create> <http://www.trellisldp.org/ns/trellis#PreferAudit> .
+A <trellis:bnode/7717707e-5b29-4fc6-a388-481a7ec99a0801ff7a30-c5b7-4d4e-b14f-c7c61076446c> <http://www.w3.org/ns/prov#wasAssociatedWith> <http://www.trellisldp.org/ns/trellis#RepositoryAdministrator> <http://www.trellisldp.org/ns/trellis#PreferAudit> .
+A <trellis:bnode/7717707e-5b29-4fc6-a388-481a7ec99a0801ff7a30-c5b7-4d4e-b14f-c7c61076446c> <http://www.w3.org/ns/prov#generatedAtTime> "2017-09-05T13:49:58.007Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> <http://www.trellisldp.org/ns/trellis#PreferAudit> .
+TC .

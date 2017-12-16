@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="trellis-rosid-file-${project.version}">
+  <repository>mvn:org.trellisldp/trellis-rosid-common/${project.version}/xml/features</repository>
+
+  <feature name="trellis-rosid-file" version="${project.version}">
+    <details>Installs the Trellis Rosid (File) Implementation</details>
+
+    <feature version="${trellisVersionRange}">trellis-api</feature>
+    <feature version="${trellisVersionRange}">trellis-vocabulary</feature>
+    <feature>trellis-rosid-common</feature>
+
+    <bundle>mvn:org.trellisldp/trellis-rosid-file/${project.version}</bundle>
+  </feature>
+</features>

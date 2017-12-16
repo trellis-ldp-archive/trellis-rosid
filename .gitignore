@@ -1,0 +1,9 @@
+.gradle
+build
+*/docs/*-SNAPSHOT
+/bin/
+.classpath
+.project
+.settings/
+trellis-rosid-app/src/dist/LICENSE
+trellis-rosid-app/config.yml

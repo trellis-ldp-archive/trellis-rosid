@@ -1,0 +1,72 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '2.0.1'
+}
+
+apply plugin: 'osgi'
+apply plugin: 'java'
+apply plugin: 'application'
+
+description = 'Trellis Rosid Stream Processor'
+mainClassName = 'org.trellisldp.rosid.file.streaming.StreamPipeline'
+
+
+ext {
+    moduleName = "org.trellisldp.rosid.file.streaming"
+}
+
+dependencies {
+
+    compile group: 'org.apache.commons', name: 'commons-rdf-jena', version: commonsRdfVersion
+    compile group: 'org.trellisldp', name: 'trellis-vocabulary', version: trellisVersion
+    compile group: 'org.apache.jena', name: 'jena-osgi', version: jenaVersion
+    compile group: 'org.apache.beam', name: 'beam-sdks-java-core', version: beamVersion
+    compile group: 'org.apache.beam', name: 'beam-sdks-java-io-kafka', version: beamVersion
+    compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
+    compile project(':trellis-rosid-file')
+
+    if (project.hasProperty("spark")) {
+        compile group: 'org.apache.beam', name: 'beam-runners-spark', version: beamVersion
+    } else if (project.hasProperty("flink")) {
+        compile group: 'org.apache.beam', name: 'beam-runners-flink_2.10', version: beamVersion
+    } else if (project.hasProperty("apex")) {
+        compile group: 'org.apache.beam', name: 'beam-runners-apex', version: beamVersion
+    } else if (project.hasProperty("google")) {
+        compile group: 'org.apache.beam', name: 'beam-runners-google-cloud-dataflow-java', version: beamVersion
+    } else {
+        compile group: 'org.apache.beam', name: 'beam-runners-direct-java', version: beamVersion
+    }
+
+    runtime group: 'org.trellisldp', name: 'trellis-event-serialization', version: trellisVersion
+
+    testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine', version: junitVintageVersion
+    testImplementation group: 'org.hamcrest', name: 'hamcrest-all', version: hamcrestVersion
+}
+
+artifacts {
+    archives javadocJar
+    archives sourceJar
+    archives shadowJar
+}
+
+
+
+shadowJar {
+    baseName = 'trellis-processing'
+    classifier = null
+    version = null
+}
+
+jar {
+    manifest {
+        description project.description
+        docURL project.docURL
+        vendor project.vendor
+        license project.license
+
+        instruction 'Automatic-Module-Name', moduleName
+        instruction 'Import-Package', '*'
+        instruction 'Export-Package', "${moduleName};version=${projectOsgiVersion}"
+    }
+}
+

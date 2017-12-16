@@ -2,8 +2,10 @@ rootProject.name = 'trellis-rosid'
 include ':trellis-rosid-common'
 include ':trellis-rosid-file'
 include ':trellis-rosid-app'
+include ':trellis-rosid-file-streaming'
 
 project(':trellis-rosid-common').projectDir = "$rootDir/trellis-rosid-common" as File
 project(':trellis-rosid-file').projectDir = "$rootDir/trellis-rosid-file" as File
 project(':trellis-rosid-app').projectDir = "$rootDir/trellis-rosid-app" as File
+project(':trellis-rosid-file-streaming').projectDir = "$rootDir/trellis-rosid-file-streaming" as File
 

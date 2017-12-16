@@ -1,0 +1,9 @@
+{
+    "@context" : "http://www.trellisldp.org/ns/trellisresource.jsonld" ,
+    "@id" : "trellis:repository/resource" ,
+    "@type" : "http://www.w3.org/ns/ldp#Container" ,
+    "type" : [ "http://example.org/types/Foo", "http://example.org/types/Bar" ] ,
+    "generatedAtTime" : [ "2017-02-15T10:05:00Z" , "2017-02-15T11:15:00Z" ] ,
+    "inbox" : "http://example.org/receiver/inbox" ,
+    "modified" : "2017-02-16T11:15:03Z"
+}

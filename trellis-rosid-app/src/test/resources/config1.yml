@@ -1,0 +1,78 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 8080
+
+logging:
+  level: WARN
+  loggers:
+    org.trellisldp: INFO
+    io.dropwizard: INFO
+
+binaries:
+  path: /tmp/trellisData/binaries
+  levels: 4
+  length: 2
+      
+resources:
+  path: /tmp/trellisData/resources
+
+baseUrl: http://localhost:8080/
+
+namespaces:
+    file: /tmp/trellisData/namespaces.json
+
+zookeeper:
+    ensembleServers: localhost:2181
+    timeout: 100
+    retryMs: 1000
+    retryMax: 10
+    retryMaxMs: 50
+
+kafka:
+    bootstrapServers: localhost:9092
+    otherProperty: otherValue
+
+auth:
+    webac:
+        enabled: false
+    anon:
+        enabled: true
+    basic:
+        enabled: true
+        usersFile: users.auth
+    jwt:
+        enabled: true
+        base64Encoded: false
+        key: secret
+
+async: true
+defaultName: Trellis
+cacheMaxAge: 86400
+
+assets:
+    icon: "http://example.org/image.icon"
+    js:
+        - "http://example.org/scripts1.js"
+        - "http://example.org/scripts2.js"
+    css:
+        - "http://example.org/styles1.css"
+        - "http://example.org/styles2.css"
+
+cors:
+    enabled: true
+    allowOrigin:
+        - "*"
+    allowMethods:
+        - "GET"
+        - "POST"
+        - "PATCH"
+    allowHeaders:
+        - "Content-Type"
+        - "Link"
+    exposeHeaders:
+        - "Link"
+        - "Location"
+    maxAge: 180
+    allowCredentials: true
+

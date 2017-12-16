@@ -1,0 +1,55 @@
+apply plugin: 'java'
+apply plugin: 'distribution'
+apply plugin: 'application'
+
+description = 'Trellis Rosid Application'
+mainClassName = 'org.trellisldp.rosid.app.TrellisApplication'
+
+dependencies {
+    compile group: 'commons-codec', name: 'commons-codec', version: commonsCodecVersion
+    compile group: 'javax.activation', name: 'javax.activation-api', version: activationApiVersion
+    compile group: 'io.dropwizard', name: 'dropwizard-auth', version: dropwizardVersion
+    compile group: 'io.dropwizard', name: 'dropwizard-core', version: dropwizardVersion
+    compile group: 'io.jsonwebtoken', name: 'jjwt', version: jwtVersion
+    compile group: 'org.apache.commons', name: 'commons-rdf-jena', version: commonsRdfVersion
+    compile group: 'org.apache.zookeeper', name: 'zookeeper', version: zookeeperVersion
+    compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+
+    compile group: 'org.trellisldp', name: 'trellis-kafka', version: trellisKafkaVersion
+
+    compile group: 'org.trellisldp', name: 'trellis-binary', version: trellisVersion
+    compile group: 'org.trellisldp', name: 'trellis-constraint-rules', version: trellisVersion
+    compile group: 'org.trellisldp', name: 'trellis-io-jena', version: trellisVersion
+    compile group: 'org.trellisldp', name: 'trellis-id', version: trellisVersion
+    compile group: 'org.trellisldp', name: 'trellis-api', version: trellisVersion
+    compile group: 'org.trellisldp', name: 'trellis-http', version: trellisVersion
+    compile group: 'org.trellisldp', name: 'trellis-vocabulary', version: trellisVersion
+    compile group: 'org.trellisldp', name: 'trellis-agent', version: trellisVersion
+    compile group: 'org.trellisldp', name: 'trellis-audit', version: trellisVersion
+    compile group: 'org.trellisldp', name: 'trellis-event-serialization', version: trellisVersion
+    compile group: 'org.trellisldp', name: 'trellis-webac', version: trellisVersion
+    compile project(':trellis-rosid-file')
+
+
+    runtime group: 'javax.xml.bind', name: 'jaxb-api', version: jaxbVersion
+
+    testCompile group: 'org.apiguardian', name: 'apiguardian-api', version: apiguardianVersion
+    testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: junitPlatformVersion
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitVersion
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: mockitoVersion
+    testImplementation group: 'org.apache.curator', name: 'curator-test', version: curatorVersion
+}
+
+artifacts {
+    archives javadocJar
+    archives sourceJar
+}
+
+task copyDistTask(type: Copy) {
+    from 'LICENSE'
+    into 'src/dist'
+}
+
+assembleDist.dependsOn copyDistTask
+

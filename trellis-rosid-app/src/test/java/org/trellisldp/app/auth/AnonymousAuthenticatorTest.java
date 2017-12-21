@@ -40,7 +40,7 @@ public class AnonymousAuthenticatorTest {
         final Optional<Principal> res = authenticator.authenticate("blahblah");
         assertTrue(res.isPresent());
         res.ifPresent(p -> {
-            assertEquals(Trellis.AnonymousUser.getIRIString(), p.getName());
+            assertEquals(Trellis.AnonymousAgent.getIRIString(), p.getName());
         });
     }
 }

@@ -212,7 +212,7 @@ public class FileResourceService extends AbstractResourceService {
                     rdf.createQuad(Trellis.PreferAudit, skolem, RDF.type, PROV.Activity),
                     rdf.createQuad(Trellis.PreferAudit, skolem, RDF.type, AS.Create),
                     rdf.createQuad(Trellis.PreferAudit, skolem, PROV.wasAssociatedWith,
-                        Trellis.RepositoryAdministrator),
+                        Trellis.AdministratorAgent),
                     rdf.createQuad(Trellis.PreferAudit, skolem, PROV.generatedAtTime,
                         rdf.createLiteral(time.toString(), XSD.dateTime)));
             RDFPatch.write(rootData, empty(), quads, now());

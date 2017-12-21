@@ -74,7 +74,7 @@ public class AnonymousAuthFilterTest {
 
         verify(mockContext).setSecurityContext(securityCaptor.capture());
 
-        assertEquals(Trellis.AnonymousUser.getIRIString(), securityCaptor.getValue().getUserPrincipal().getName());
+        assertEquals(Trellis.AnonymousAgent.getIRIString(), securityCaptor.getValue().getUserPrincipal().getName());
         assertFalse(securityCaptor.getValue().isUserInRole("role"));
         assertFalse(securityCaptor.getValue().isSecure());
         assertEquals("NONE", securityCaptor.getValue().getAuthenticationScheme());
@@ -94,7 +94,7 @@ public class AnonymousAuthFilterTest {
 
         verify(mockContext).setSecurityContext(securityCaptor.capture());
 
-        assertEquals(Trellis.AnonymousUser.getIRIString(), securityCaptor.getValue().getUserPrincipal().getName());
+        assertEquals(Trellis.AnonymousAgent.getIRIString(), securityCaptor.getValue().getUserPrincipal().getName());
         assertFalse(securityCaptor.getValue().isUserInRole("role"));
         assertTrue(securityCaptor.getValue().isSecure());
         assertEquals("NONE", securityCaptor.getValue().getAuthenticationScheme());
@@ -114,7 +114,7 @@ public class AnonymousAuthFilterTest {
 
         verify(mockContext).setSecurityContext(securityCaptor.capture());
 
-        assertEquals(Trellis.AnonymousUser.getIRIString(), securityCaptor.getValue().getUserPrincipal().getName());
+        assertEquals(Trellis.AnonymousAgent.getIRIString(), securityCaptor.getValue().getUserPrincipal().getName());
         assertFalse(securityCaptor.getValue().isUserInRole("role"));
         assertFalse(securityCaptor.getValue().isSecure());
         assertEquals("NONE", securityCaptor.getValue().getAuthenticationScheme());

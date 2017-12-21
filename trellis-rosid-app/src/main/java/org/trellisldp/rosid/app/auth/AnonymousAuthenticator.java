@@ -31,6 +31,6 @@ public class AnonymousAuthenticator implements Authenticator<String, Principal> 
 
     @Override
     public Optional<Principal> authenticate(final String credentials) throws AuthenticationException {
-        return of(new PrincipalImpl(Trellis.AnonymousUser.getIRIString()));
+        return of(new PrincipalImpl(Trellis.AnonymousAgent.getIRIString()));
     }
 }

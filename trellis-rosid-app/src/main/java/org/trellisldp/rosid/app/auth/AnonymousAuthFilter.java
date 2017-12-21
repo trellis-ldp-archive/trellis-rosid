@@ -51,7 +51,7 @@ public class AnonymousAuthFilter extends AuthFilter<String, Principal> {
         ctx.setSecurityContext(new SecurityContext() {
             @Override
             public Principal getUserPrincipal() {
-                return new PrincipalImpl(Trellis.AnonymousUser.getIRIString());
+                return new PrincipalImpl(Trellis.AnonymousAgent.getIRIString());
             }
 
             @Override

@@ -69,8 +69,8 @@ subprojects {
         commonsCodecVersion = '1.11'
         commonsIoVersion = '2.6'
         commonsRdfVersion = '0.3.0-incubating'
-        commonsTextVersion = '1.1'
-        jacksonVersion = '2.9.2'
+        commonsTextVersion = '1.2'
+        jacksonVersion = '2.9.3'
 
         curatorVersion = '4.0.0'
         kafkaVersion = '0.11.0.1_1'
@@ -84,7 +84,7 @@ subprojects {
         jaxbVersion = '2.3.0'
 
         dropwizardVersion = '1.2.0'
-        jenaVersion = '3.5.0'
+        jenaVersion = '3.6.0'
         metricsVersion = '3.2.5'
         slf4jVersion = '1.7.25'
 
@@ -95,7 +95,7 @@ subprojects {
         junitPlatformVersion = '1.0.2'
         junitVintageVersion = '4.12.2'
         logbackVersion = '1.2.3'
-        mockitoVersion = '2.12.0'
+        mockitoVersion = '2.13.0'
         hamcrestVersion = '1.3'
 
         /* OSGi */

@@ -46,7 +46,7 @@ import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.trellisldp.api.NamespaceService;
-import org.trellisldp.api.RuntimeRepositoryException;
+import org.trellisldp.api.RuntimeTrellisException;
 import org.trellisldp.vocabulary.JSONLD;
 import org.trellisldp.vocabulary.LDP;
 
@@ -121,7 +121,7 @@ public class NamespacesTest {
     @Test
     public void testErrorHandler() throws Exception {
         doThrow(RuntimeException.class).when(mockCache).getCurrentChildren(ZNODE_NAMESPACES);
-        assertThrows(RuntimeRepositoryException.class, () -> new Namespaces(mockCurator, mockCache));
+        assertThrows(RuntimeTrellisException.class, () -> new Namespaces(mockCurator, mockCache));
     }
 
     @Test

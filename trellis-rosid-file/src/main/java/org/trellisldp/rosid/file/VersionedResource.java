@@ -39,7 +39,7 @@ import org.apache.commons.rdf.api.Quad;
 import org.slf4j.Logger;
 
 import org.trellisldp.api.Resource;
-import org.trellisldp.api.RuntimeRepositoryException;
+import org.trellisldp.api.RuntimeTrellisException;
 import org.trellisldp.api.VersionRange;
 import org.trellisldp.rosid.common.ResourceData;
 import org.trellisldp.vocabulary.LDP;
@@ -150,7 +150,7 @@ public class VersionedResource extends AbstractFileResource {
                     LOGGER.debug("Creating resource: {} at {}", identifier, time);
                     return from(identifier, dataset, mementos);
                 } catch (final Exception ex) {
-                    throw new RuntimeRepositoryException("Error processing dataset", ex);
+                    throw new RuntimeTrellisException("Error processing dataset", ex);
                 }
             }
         });

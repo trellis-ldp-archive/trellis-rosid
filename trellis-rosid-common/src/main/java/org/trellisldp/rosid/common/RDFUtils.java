@@ -41,7 +41,7 @@ import org.apache.commons.rdf.jena.JenaRDF;
 import org.apache.jena.riot.RDFParser;
 import org.apache.jena.sparql.core.DatasetGraph;
 import org.slf4j.Logger;
-import org.trellisldp.api.RuntimeRepositoryException;
+import org.trellisldp.api.RuntimeTrellisException;
 
 /**
  * @author acoburn
@@ -100,7 +100,7 @@ public final class RDFUtils {
             return str.toString();
         } catch (final IOException ex) {
             LOGGER.error("Error processing dataset in quad serializer: ", ex.getMessage());
-            throw new RuntimeRepositoryException("Error processing dataset", ex);
+            throw new RuntimeTrellisException("Error processing dataset", ex);
         }
     }
 

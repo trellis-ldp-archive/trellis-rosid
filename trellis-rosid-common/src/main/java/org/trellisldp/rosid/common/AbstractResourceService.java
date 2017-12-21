@@ -50,7 +50,7 @@ import org.slf4j.Logger;
 import org.trellisldp.api.EventService;
 import org.trellisldp.api.Resource;
 import org.trellisldp.api.ResourceService;
-import org.trellisldp.api.RuntimeRepositoryException;
+import org.trellisldp.api.RuntimeTrellisException;
 
 /**
  * @author acoburn
@@ -97,7 +97,7 @@ public abstract class AbstractResourceService implements ResourceService {
             this.curator.createContainers(ZNODE_COORDINATION);
         } catch (final Exception ex) {
             LOGGER.error("Could not create zk session node: {}", ex.getMessage());
-            throw new RuntimeRepositoryException(ex);
+            throw new RuntimeTrellisException(ex);
         }
     }
 
@@ -160,7 +160,7 @@ public abstract class AbstractResourceService implements ResourceService {
         }
 
         if (!lock.isAcquiredInThisProcess()) {
-            throw new RuntimeRepositoryException("Could not acquire resource lock for " + identifier);
+            throw new RuntimeTrellisException("Could not acquire resource lock for " + identifier);
         }
 
         get(identifier, MAX).ifPresent(res -> {
@@ -178,7 +178,7 @@ public abstract class AbstractResourceService implements ResourceService {
             lock.release();
         } catch (final Exception ex) {
             LOGGER.error("Error releasing resource lock: {}", ex.getMessage());
-            throw new RuntimeRepositoryException("Error releasing resource lock", ex);
+            throw new RuntimeTrellisException("Error releasing resource lock", ex);
         }
 
         return stream;

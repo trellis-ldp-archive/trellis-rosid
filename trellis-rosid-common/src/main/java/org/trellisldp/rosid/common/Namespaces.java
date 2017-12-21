@@ -42,7 +42,7 @@ import org.apache.curator.framework.recipes.cache.ChildData;
 import org.apache.curator.framework.recipes.cache.TreeCache;
 import org.slf4j.Logger;
 import org.trellisldp.api.NamespaceService;
-import org.trellisldp.api.RuntimeRepositoryException;
+import org.trellisldp.api.RuntimeTrellisException;
 
 /**
  * @author acoburn
@@ -87,7 +87,7 @@ public class Namespaces implements NamespaceService {
             init(filePath).forEach(data::put);
         } catch (final Exception ex) {
             LOGGER.error("Could not create a zk node cache: {}", ex);
-            throw new RuntimeRepositoryException(ex);
+            throw new RuntimeTrellisException(ex);
         }
     }
 

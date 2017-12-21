@@ -71,7 +71,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
 import org.trellisldp.api.EventService;
-import org.trellisldp.api.RuntimeRepositoryException;
+import org.trellisldp.api.RuntimeTrellisException;
 import org.trellisldp.vocabulary.AS;
 import org.trellisldp.vocabulary.DC;
 import org.trellisldp.vocabulary.LDP;
@@ -275,7 +275,7 @@ public class AbstractResourceServiceTest {
     @Test
     public void testFailedLock1() throws Exception {
         doThrow(new Exception("Error")).when(mockCurator).createContainers(ZNODE_COORDINATION);
-        assertThrows(RuntimeRepositoryException.class, () ->
+        assertThrows(RuntimeTrellisException.class, () ->
                 new MyResourceService(mockCurator, mockEventService, null));
     }
 
@@ -313,7 +313,7 @@ public class AbstractResourceServiceTest {
         when(mockLock.isAcquiredInThisProcess()).thenReturn(true);
 
         final ResourceService svc = new MyResourceService(curator.getConnectString(), mockEventService, mockLock);
-        assertThrows(RuntimeRepositoryException.class, () -> svc.purge(resource));
+        assertThrows(RuntimeTrellisException.class, () -> svc.purge(resource));
     }
 
     @Test
@@ -321,13 +321,13 @@ public class AbstractResourceServiceTest {
         doThrow(new Exception("Error")).when(mockLock).acquire(any(Long.class), any(TimeUnit.class));
 
         final ResourceService svc = new MyResourceService(curator.getConnectString(), mockEventService, mockLock);
-        assertThrows(RuntimeRepositoryException.class, () -> svc.purge(resource));
+        assertThrows(RuntimeTrellisException.class, () -> svc.purge(resource));
     }
 
     @Test
     public void testFailedLock6() throws Exception {
         final ResourceService svc = new MyResourceService(curator.getConnectString(), mockEventService, mockLock);
-        assertThrows(RuntimeRepositoryException.class, () -> svc.purge(resource));
+        assertThrows(RuntimeTrellisException.class, () -> svc.purge(resource));
     }
 
 

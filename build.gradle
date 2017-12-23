@@ -68,7 +68,7 @@ subprojects {
 
         commonsCodecVersion = '1.11'
         commonsIoVersion = '2.6'
-        commonsRdfVersion = '0.3.0-incubating'
+        commonsRdfVersion = '0.5.0'
         commonsTextVersion = '1.2'
         jacksonVersion = '2.9.3'
 

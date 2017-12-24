@@ -70,7 +70,7 @@ subprojects {
         jacksonVersion = '2.9.3'
 
         curatorVersion = '4.0.0'
-        kafkaVersion = '0.11.0.1_1'
+        kafkaVersion = '1.0.0_1'
         zookeeperVersion = '3.4.11'
 
         trellisKafkaVersion = '0.2.1'
@@ -270,10 +270,10 @@ task apidocs(type: Javadoc, dependsOn: getTasksByName('docs', true)) {
     exclude '**/impl/*'
     options.with {
         memberLevel = JavadocMemberLevel.PUBLIC
-        links "http://docs.oracle.com/javase/8/docs/api/"
-        links 'http://docs.oracle.com/javaee/7/api/'
+        links "https://docs.oracle.com/javase/8/docs/api/"
+        links 'https://docs.oracle.com/javaee/7/api/'
         links 'https://kafka.apache.org/0110/javadoc/'
-        links 'http://curator.apache.org/apidocs/'
+        links 'https://curator.apache.org/apidocs/'
         links 'https://trellis-ldp.github.io/trellis/apidocs/'
         links 'https://commons.apache.org/proper/commons-rdf/apidocs/'
     }

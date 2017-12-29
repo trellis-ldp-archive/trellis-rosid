@@ -15,8 +15,6 @@ package org.trellisldp.rosid.app.config;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import io.dropwizard.configuration.YamlConfigurationFactory;
@@ -47,8 +45,7 @@ public class TrellisConfigurationTest {
         assertEquals((Integer) 86400, config.getCacheMaxAge());
         assertEquals((Long) 100L, config.getJsonLdCacheSize());
         assertEquals((Long) 24L, config.getJsonLdCacheExpireHours());
-        assertNull(config.getJsonLdDomainWhitelist());
-        assertNotNull(config.getJsonLdWhitelist());
+        assertTrue(config.getJsonLdDomainWhitelist().isEmpty());
         assertTrue(config.getJsonLdWhitelist().contains("http://example.org/context.json"));
     }
 

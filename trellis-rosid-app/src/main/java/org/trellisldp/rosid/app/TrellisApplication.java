@@ -16,8 +16,6 @@ package org.trellisldp.rosid.app;
 import static com.google.common.cache.CacheBuilder.newBuilder;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
-import static java.util.Collections.emptySet;
-import static java.util.Objects.isNull;
 import static java.util.concurrent.TimeUnit.HOURS;
 import static org.trellisldp.rosid.app.TrellisUtils.getAuthFilters;
 import static org.trellisldp.rosid.app.TrellisUtils.getCorsConfiguration;
@@ -32,8 +30,6 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.recipes.cache.TreeCache;
@@ -112,15 +108,11 @@ public class TrellisApplication extends Application<TrellisConfiguration> {
                 idService.getSupplier("file:", config.getBinaries().getLevels(), config.getBinaries().getLength()));
 
         // IO Service
-        final Set<String> whitelist = isNull(config.getJsonLdWhitelist())
-            ? emptySet() : new HashSet<>(config.getJsonLdWhitelist());
-        final Set<String> whitelistDomains = isNull(config.getJsonLdDomainWhitelist())
-            ? emptySet() : new HashSet<>(config.getJsonLdDomainWhitelist());
         final CacheService<String, String> profileCache = new TrellisCache<>(newBuilder()
                 .maximumSize(config.getJsonLdCacheSize())
                 .expireAfterAccess(config.getJsonLdCacheExpireHours(), HOURS).build());
         final IOService ioService = new JenaIOService(namespaceService, TrellisUtils.getAssetConfiguration(config),
-                whitelist, whitelistDomains, profileCache);
+                config.getJsonLdWhitelist(), config.getJsonLdDomainWhitelist(), profileCache);
 
         // Health checks
         environment.healthChecks().register("zookeeper", new ZookeeperHealthCheck(curator));

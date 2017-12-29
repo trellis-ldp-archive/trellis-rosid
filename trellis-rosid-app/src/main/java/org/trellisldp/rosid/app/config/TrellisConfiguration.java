@@ -13,11 +13,13 @@
  */
 package org.trellisldp.rosid.app.config;
 
+import static java.util.Collections.emptySet;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.dropwizard.Configuration;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.validation.constraints.NotNull;
 
@@ -60,9 +62,11 @@ public class TrellisConfiguration extends Configuration {
     @NotNull
     private NamespaceConfiguration namespaces = new NamespaceConfiguration();
 
-    private List<String> whitelist;
+    @NotNull
+    private Set<String> whitelist = emptySet();
 
-    private List<String> whitelistDomains;
+    @NotNull
+    private Set<String> whitelistDomains = emptySet();
 
     private Long profileCacheSize = 100L;
 
@@ -290,7 +294,7 @@ public class TrellisConfiguration extends Configuration {
      * @return the json-ld profile whitelist
      */
     @JsonProperty
-    public List<String> getJsonLdWhitelist() {
+    public Set<String> getJsonLdWhitelist() {
         return whitelist;
     }
 
@@ -299,7 +303,7 @@ public class TrellisConfiguration extends Configuration {
      * @param whitelist the json-ld profile witelist
      */
     @JsonProperty
-    public void setJsonLdWhitelist(final List<String> whitelist) {
+    public void setJsonLdWhitelist(final Set<String> whitelist) {
         this.whitelist = whitelist;
     }
 
@@ -308,7 +312,7 @@ public class TrellisConfiguration extends Configuration {
      * @return the json-ld profile domain whitelist
      */
     @JsonProperty
-    public List<String> getJsonLdDomainWhitelist() {
+    public Set<String> getJsonLdDomainWhitelist() {
         return whitelistDomains;
     }
 
@@ -317,7 +321,7 @@ public class TrellisConfiguration extends Configuration {
      * @param whitelistDomains the json-ld domain profile witelist
      */
     @JsonProperty
-    public void setJsonLdDomainWhitelist(final List<String> whitelistDomains) {
+    public void setJsonLdDomainWhitelist(final Set<String> whitelistDomains) {
         this.whitelistDomains = whitelistDomains;
     }
 

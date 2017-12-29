@@ -13,10 +13,14 @@
  */
 package org.trellisldp.rosid.app;
 
+import static com.google.common.cache.CacheBuilder.newBuilder;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
+import static java.util.concurrent.TimeUnit.SECONDS;
 import static java.util.stream.Collectors.joining;
 import static org.apache.curator.framework.CuratorFrameworkFactory.newClient;
+
+import com.google.common.cache.Cache;
 
 import io.dropwizard.auth.AuthFilter;
 import io.dropwizard.auth.basic.BasicCredentialAuthFilter;
@@ -29,9 +33,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Properties;
+import java.util.Set;
 
+import org.apache.commons.rdf.api.IRI;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.retry.BoundedExponentialBackoffRetry;
+import org.trellisldp.api.CacheService;
 import org.trellisldp.rosid.app.auth.AnonymousAuthFilter;
 import org.trellisldp.rosid.app.auth.AnonymousAuthenticator;
 import org.trellisldp.rosid.app.auth.BasicAuthenticator;
@@ -39,7 +46,6 @@ import org.trellisldp.rosid.app.auth.JwtAuthenticator;
 import org.trellisldp.rosid.app.config.AuthConfiguration;
 import org.trellisldp.rosid.app.config.CORSConfiguration;
 import org.trellisldp.rosid.app.config.TrellisConfiguration;
-import org.trellisldp.rosid.app.config.WebacConfiguration;
 
 /**
  * @author acoburn
@@ -93,9 +99,12 @@ class TrellisUtils {
         return of(filters);
     }
 
-    public static Optional<WebacConfiguration> getWebacConfiguration(final TrellisConfiguration config) {
+    public static Optional<CacheService<String, Set<IRI>>> getWebacConfiguration(final TrellisConfiguration config) {
         if (config.getAuth().getWebac().getEnabled()) {
-            return of(config.getAuth().getWebac());
+            final Cache<String, Set<IRI>> authCache = newBuilder().maximumSize(config.getAuth().getWebac()
+                    .getCacheSize()).expireAfterWrite(config.getAuth().getWebac()
+                    .getCacheExpireSeconds(), SECONDS).build();
+            return of(new TrellisCache<>(authCache));
         }
         return empty();
     }

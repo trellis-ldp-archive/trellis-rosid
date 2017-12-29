@@ -77,11 +77,11 @@ public class TrellisUtilsTest {
             .build(new File(getClass().getResource("/config1.yml").toURI()));
 
 
-        assertFalse(TrellisUtils.getWebacConfiguration(config).isPresent());
-
-        config.getAuth().getWebac().setEnabled(true);
-
         assertTrue(TrellisUtils.getWebacConfiguration(config).isPresent());
+
+        config.getAuth().getWebac().setEnabled(false);
+
+        assertFalse(TrellisUtils.getWebacConfiguration(config).isPresent());
     }
 
     @Test

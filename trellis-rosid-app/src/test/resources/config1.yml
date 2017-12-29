@@ -13,7 +13,7 @@ binaries:
   path: /tmp/trellisData/binaries
   levels: 4
   length: 2
-      
+
 resources:
   path: /tmp/trellisData/resources
 
@@ -35,7 +35,9 @@ kafka:
 
 auth:
     webac:
-        enabled: false
+        enabled: true
+        cacheSize: 100
+        cacheExpireSeconds: 10
     anon:
         enabled: true
     basic:
@@ -58,6 +60,9 @@ assets:
     css:
         - "http://example.org/styles1.css"
         - "http://example.org/styles2.css"
+
+jsonLdWhitelist:
+    - "http://example.org/context.json"
 
 cors:
     enabled: true

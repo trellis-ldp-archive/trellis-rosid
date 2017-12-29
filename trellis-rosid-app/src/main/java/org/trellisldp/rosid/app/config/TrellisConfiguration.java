@@ -17,6 +17,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.dropwizard.Configuration;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 
 /**
@@ -57,6 +59,14 @@ public class TrellisConfiguration extends Configuration {
 
     @NotNull
     private NamespaceConfiguration namespaces = new NamespaceConfiguration();
+
+    private List<String> whitelist;
+
+    private List<String> whitelistDomains;
+
+    private Long profileCacheSize = 100L;
+
+    private Long profileCacheExpireHours = 24L;
 
     /**
      * Set async mode
@@ -273,5 +283,77 @@ public class TrellisConfiguration extends Configuration {
     @JsonProperty
     public NamespaceConfiguration getNamespaces() {
         return namespaces;
+    }
+
+    /**
+     * Get the whitelist of custom JSON-LD profiles
+     * @return the json-ld profile whitelist
+     */
+    @JsonProperty
+    public List<String> getJsonLdWhitelist() {
+        return whitelist;
+    }
+
+    /**
+     * Set the whitelist of custom JSON-LD profiles.
+     * @param whitelist the json-ld profile witelist
+     */
+    @JsonProperty
+    public void setJsonLdWhitelist(final List<String> whitelist) {
+        this.whitelist = whitelist;
+    }
+
+    /**
+     * Get the domain whitelist of custom JSON-LD profiles
+     * @return the json-ld profile domain whitelist
+     */
+    @JsonProperty
+    public List<String> getJsonLdDomainWhitelist() {
+        return whitelistDomains;
+    }
+
+    /**
+     * Set the domain whitelist of custom JSON-LD profiles.
+     * @param whitelistDomains the json-ld domain profile witelist
+     */
+    @JsonProperty
+    public void setJsonLdDomainWhitelist(final List<String> whitelistDomains) {
+        this.whitelistDomains = whitelistDomains;
+    }
+
+    /**
+     * Get the JSON-LD profile cache expire time in hours (default=24).
+     * @return the json-ld profile cache expire time in hours
+     */
+    @JsonProperty
+    public Long getJsonLdCacheExpireHours() {
+        return profileCacheExpireHours;
+    }
+
+    /**
+     * Set the JSON-LD profile cache exire time in hours.
+     * @param profileCacheExpireHours the json-ld profile cache expire time in hours.
+     */
+    @JsonProperty
+    public void setJsonLdCacheExpireHours(final Long profileCacheExpireHours) {
+        this.profileCacheExpireHours = profileCacheExpireHours;
+    }
+
+    /**
+     * Get the JSON-LD profile cache size (default=100).
+     * @return the json-ld profile cache size
+     */
+    @JsonProperty
+    public Long getJsonLdCacheSize() {
+        return profileCacheSize;
+    }
+
+    /**
+     * Set the JSON-LD profile cache size.
+     * @param profileCacheSize the size of the json-ld profile cache
+     */
+    @JsonProperty
+    public void setJsonLdCacheSize(final Long profileCacheSize) {
+        this.profileCacheSize = profileCacheSize;
     }
 }

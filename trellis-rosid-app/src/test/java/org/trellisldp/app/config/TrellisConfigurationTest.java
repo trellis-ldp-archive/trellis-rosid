@@ -15,6 +15,8 @@ package org.trellisldp.rosid.app.config;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import io.dropwizard.configuration.YamlConfigurationFactory;
@@ -43,6 +45,11 @@ public class TrellisConfigurationTest {
         assertTrue(config.getAsync());
         assertEquals("Trellis", config.getDefaultName());
         assertEquals((Integer) 86400, config.getCacheMaxAge());
+        assertEquals((Long) 100L, config.getJsonLdCacheSize());
+        assertEquals((Long) 24L, config.getJsonLdCacheExpireHours());
+        assertNull(config.getJsonLdDomainWhitelist());
+        assertNotNull(config.getJsonLdWhitelist());
+        assertTrue(config.getJsonLdWhitelist().contains("http://example.org/context.json"));
     }
 
 
@@ -76,7 +83,9 @@ public class TrellisConfigurationTest {
                 Validators.newValidator(), Jackson.newObjectMapper(), "")
             .build(new File(getClass().getResource("/config1.yml").toURI()));
 
-        assertFalse(config.getAuth().getWebac().getEnabled());
+        assertTrue(config.getAuth().getWebac().getEnabled());
+        assertEquals((Long) 100L, config.getAuth().getWebac().getCacheSize());
+        assertEquals((Long) 10L, config.getAuth().getWebac().getCacheExpireSeconds());
         assertTrue(config.getAuth().getAnon().getEnabled());
         assertTrue(config.getAuth().getBasic().getEnabled());
         assertEquals("users.auth", config.getAuth().getBasic().getUsersFile());

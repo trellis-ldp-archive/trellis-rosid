@@ -27,4 +27,4 @@ matrix:
     - env: JDK_RELEASE='JDK 10 Early-Access'
 
 after_success:
-  - ./gradlew clean jacocoRootReport sonarqube
+  - ./gradlew clean jacocoRootReport coveralls sonarqube

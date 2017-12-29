@@ -136,10 +136,9 @@ public class TrellisApplication extends Application<TrellisConfiguration> {
         environment.jersey().register(new CacheControlFilter(config.getCacheMaxAge()));
 
         // Authorization
-        getWebacConfiguration(config).ifPresent(webacCache -> {
+        getWebacConfiguration(config).ifPresent(webacCache ->
             environment.jersey().register(new WebAcFilter(
-                        asList("Authorization"), new WebACService(resourceService, webacCache)));
-        });
+                        asList("Authorization"), new WebACService(resourceService, webacCache))));
 
         // CORS
         getCorsConfiguration(config).ifPresent(cors -> environment.jersey().register(

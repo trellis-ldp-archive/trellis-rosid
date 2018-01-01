@@ -249,4 +249,8 @@ Trellis supports the [HTTP/2 protocol](https://http2.github.io/faq/). For more i
 please refer to the [dropwizard documentation](http://www.dropwizard.io/1.2.0/docs/manual/configuration.html#http-2-over-tls).
 In particular, an `h2` connector type must be used, typically with a corresponding TLS configuration.
 
+## Metrics reporting
+
+Application metrics can be configured by defining a frequency and a reporter. For more information about configuring these
+reports, please refer to the [dropwizard metrics configuration reference](http://www.dropwizard.io/1.0.5/docs/manual/configuration.html#metrics).
 

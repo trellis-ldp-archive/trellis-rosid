@@ -71,10 +71,10 @@ subprojects {
         jacksonVersion = '2.9.3'
 
         curatorVersion = '4.0.0'
-        kafkaVersion = '1.0.0_1'
+        kafkaVersion = '1.0.0_2'
         zookeeperVersion = '3.4.11'
 
-        trellisKafkaVersion = '0.2.1'
+        trellisKafkaVersion = '0.2.3'
         activationApiVersion = '1.2.0'
         beamVersion = '2.1.0'
 
@@ -83,7 +83,6 @@ subprojects {
 
         dropwizardVersion = '1.2.0'
         jenaVersion = '3.6.0'
-        metricsVersion = '3.2.5'
         slf4jVersion = '1.7.25'
 
         /* Testing */

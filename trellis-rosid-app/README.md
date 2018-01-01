@@ -4,7 +4,7 @@
 
 ## Requirements
 
-  * A [Zookeeper](http://zookeeper.apache.org) ensemble (3.5.x or later)
+  * A [Zookeeper](http://zookeeper.apache.org) ensemble (3.4.x or later)
   * A [Kafka](http://kafka.apache.org) cluster (0.11.x or later)
   * Java 8 or 9
   * An [asynchronous processing application](https://github.com/trellis-ldp/trellis-rosid-file-streaming)
@@ -208,4 +208,45 @@ cacheMaxAge: 86400
 | Name | Default | Description |
 | ---- | ------- | ----------- |
 | cacheMaxAge | 86400 | The value of the `Cache-Control: max-age=` response header |
+
+```yaml
+jsonLdWhitelist:
+    - "http://example.com/context.json"
+```
+
+| Name | Default | Description |
+| ---- | ------- | ----------- |
+| jsonLdWhitelist | an empty list | a user-supplied whitelist of valid JSON-LD profile values |
+
+```yaml
+jsonLdDomainWhitelist:
+    - "http://example.com/"
+```
+
+| Name | Default | Description |
+| ---- | ------- | ----------- |
+| jsonLdDomainWhitelist | an empty list | a user-supplied whitelist of domains for valid JSON-LD profile values |
+
+```yaml
+jsonLdCacheExpireHours: 24
+```
+
+| Name | Default | Description |
+| ---- | ------- | ----------- |
+| jsonLdCacheExpireHours | 24 | The number of hours that a JSON-LD profile value will be stored in a cache. |
+
+```yaml
+jsonLdCacheSize: 100
+```
+
+| Name | Default | Description |
+| ---- | ------- | ----------- |
+| jsonLdCacheSize | 100 | The number of entries stored in the JSON-LD profile cache. |
+
+## HTTP/2
+
+Trellis supports the [HTTP/2 protocol](https://http2.github.io/faq/). For more information about how to enable HTTP/2 with Trellis,
+please refer to the [dropwizard documentation](http://www.dropwizard.io/1.2.0/docs/manual/configuration.html#http-2-over-tls).
+In particular, an `h2` connector type must be used, typically with a corresponding TLS configuration.
+
 

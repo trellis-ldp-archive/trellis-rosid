@@ -57,6 +57,10 @@ shadowJar {
     version = null
 }
 
+// Don't install or upload artifacts from this project
+install.enabled = false
+uploadArchives.enabled = false
+
 jar {
     manifest {
         description project.description

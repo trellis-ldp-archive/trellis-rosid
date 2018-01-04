@@ -198,8 +198,9 @@ public class AbstractResourceServiceTest {
     public void testSkolemization() {
         final BlankNode bnode = rdf.createBlankNode("testing");
         final IRI iri = rdf.createIRI("trellis:bnode/testing");
-        final IRI root = rdf.createIRI("trellis:repository");
-        final IRI child = rdf.createIRI("trellis:repository/resource/child");
+        final IRI root = rdf.createIRI("trellis:");
+        final IRI resource = rdf.createIRI("trellis:resource");
+        final IRI child = rdf.createIRI("trellis:resource/child");
         final ResourceService svc = new MyResourceService(curator.getConnectString(), mockEventService, null);
 
         assertTrue(svc.skolemize(bnode) instanceof IRI);

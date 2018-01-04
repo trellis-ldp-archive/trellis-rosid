@@ -66,7 +66,8 @@ public class RDFUtilsTest {
     @Test
     public void testGetParent() {
         assertEquals(of("trellis:repository"), getParent("trellis:repository/resource"));
-        assertFalse(getParent("trellis:repository").isPresent());
+        assertEquals(of("trellis:"), getParent("trellis:repository"));
+        assertFalse(getParent("trellis:").isPresent());
         assertEquals(of("trellis:repository/resource"), getParent("trellis:repository/resource/child"));
     }
 

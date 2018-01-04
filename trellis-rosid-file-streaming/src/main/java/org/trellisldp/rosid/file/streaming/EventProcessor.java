@@ -64,7 +64,11 @@ class EventProcessor extends DoFn<KV<String, String>, KV<String, String>> {
      */
     public EventProcessor(final String baseUrl) {
         super();
-        this.baseUrl = baseUrl;
+        if (nonNull(baseUrl)) {
+            this.baseUrl = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
+        } else {
+            this.baseUrl = baseUrl;
+        }
     }
 
     /**

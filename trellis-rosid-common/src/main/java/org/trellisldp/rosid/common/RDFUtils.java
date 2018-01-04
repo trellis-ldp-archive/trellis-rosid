@@ -14,12 +14,14 @@
 package org.trellisldp.rosid.common;
 
 import static java.util.Objects.nonNull;
+import static java.util.Optional.empty;
 import static java.util.Optional.of;
 import static java.util.stream.Collectors.toList;
 import static org.apache.jena.riot.Lang.NQUADS;
 import static org.apache.jena.riot.RDFDataMgr.write;
 import static org.apache.jena.sparql.core.DatasetGraphFactory.create;
 import static org.slf4j.LoggerFactory.getLogger;
+import static org.trellisldp.api.RDFUtils.TRELLIS_PREFIX;
 import static org.trellisldp.vocabulary.PROV.endedAtTime;
 import static org.trellisldp.vocabulary.PROV.wasGeneratedBy;
 import static org.trellisldp.vocabulary.Trellis.PreferAudit;
@@ -83,6 +85,11 @@ public final class RDFUtils {
      * @return the parent if it exists
      */
     public static Optional<String> getParent(final String identifier) {
+        if (TRELLIS_PREFIX.equals(identifier)) {
+            return empty();
+        } else if (identifier.lastIndexOf('/') == -1) {
+            return of(TRELLIS_PREFIX);
+        }
         return of(identifier.lastIndexOf('/')).filter(idx -> idx > 0).map(idx -> identifier.substring(0, idx));
     }
 

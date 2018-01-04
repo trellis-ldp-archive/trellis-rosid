@@ -22,7 +22,10 @@ dependencies {
     implementation group: 'org.apache.jena', name: 'jena-osgi', version: jenaVersion
     implementation group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
     implementation group: 'org.trellisldp', name: 'trellis-vocabulary', version: trellisVersion
-    implementation group: 'org.apache.zookeeper', name: 'zookeeper', version: zookeeperVersion
+    implementation (group: 'org.apache.zookeeper', name: 'zookeeper', version: zookeeperVersion) {
+        exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+        exclude group: 'log4j', module: 'log4j'
+    }
 
     testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
     testImplementation group: 'org.apache.curator', name: 'curator-test', version: curatorVersion

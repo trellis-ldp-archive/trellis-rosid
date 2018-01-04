@@ -7,7 +7,7 @@
   * A [Zookeeper](http://zookeeper.apache.org) ensemble (3.4.x or later)
   * A [Kafka](http://kafka.apache.org) cluster (0.11.x or later)
   * Java 8 or 9
-  * An [asynchronous processing application](https://github.com/trellis-ldp/trellis-rosid-file-streaming)
+  * An [asynchronous processing application](https://github.com/trellis-ldp/trellis-rosid/tree/master/trellis-rosid-file-streaming)
 
 The location of Kafka and Zookeeper will be defined in the `./etc/config.yml` file.
 
@@ -19,11 +19,11 @@ desired values for your system.
 To run trellis directly from within a console, issue this command:
 
 ```bash
-$ ./bin/trellis-app server ./etc/config.yml
+$ ./bin/trellis-rosid-app server ./etc/config.yml
 ```
 
 **Note**: When running trellis, please be sure to also have an active
-[asynchronous processor](https://github.com/trellis-ldp/trellis-rosid-file-streaming).
+[asynchronous processor](https://github.com/trellis-ldp/trellis-rosid/tree/master/trellis-rosid-file-streaming).
 
 ## Installation
 

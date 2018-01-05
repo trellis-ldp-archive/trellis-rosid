@@ -30,7 +30,10 @@ import static org.trellisldp.rosid.common.RosidConstants.ZNODE_COORDINATION;
 import static org.trellisldp.vocabulary.AS.Create;
 import static org.trellisldp.vocabulary.AS.Delete;
 import static org.trellisldp.vocabulary.RDF.type;
+import static org.trellisldp.vocabulary.Trellis.DeletedResource;
 import static org.trellisldp.vocabulary.Trellis.PreferAudit;
+import static org.trellisldp.vocabulary.Trellis.PreferServerManaged;
+import static org.trellisldp.vocabulary.Trellis.PreferUserManaged;
 
 import java.time.Instant;
 import java.util.Optional;
@@ -51,6 +54,7 @@ import org.trellisldp.api.EventService;
 import org.trellisldp.api.Resource;
 import org.trellisldp.api.ResourceService;
 import org.trellisldp.api.RuntimeTrellisException;
+import org.trellisldp.vocabulary.LDP;
 
 /**
  * @author acoburn
@@ -132,6 +136,19 @@ public abstract class AbstractResourceService implements ResourceService {
         } catch (final Exception ex) {
             LOGGER.error("Error acquiring resource lock: {}", ex.getMessage());
             return completedFuture(false);
+        }
+
+        // Set the interaction model
+        if (nonNull(ixnModel)) {
+            dataset.remove(of(PreferServerManaged), null, type, null);
+            dataset.add(PreferServerManaged, identifier, type, ixnModel);
+        }
+
+        // Add or remove the "deleted" marker, as appropriate
+        if (LDP.Resource.equals(ixnModel) && dataset.contains(of(PreferAudit), null, type, Delete)) {
+            dataset.add(PreferUserManaged, identifier, type, DeletedResource);
+        } else {
+            dataset.remove(of(PreferUserManaged), identifier, type, DeletedResource);
         }
 
         final Boolean status = tryWrite(identifier, dataset);

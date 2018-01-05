@@ -224,9 +224,9 @@ public class AbstractResourceServiceTest {
         dataset.add(rdf.createQuad(Trellis.PreferAudit, rdf.createBlankNode(), type, AS.Create));
 
         final ResourceService svc = new MyResourceService(curator.getConnectString(), null, null);
-        assertTrue(svc.put(resource, null, dataset).get());
-        assertFalse(svc.put(existing, null, dataset).get());
-        assertFalse(svc.put(unwritable, null, dataset).get());
+        assertTrue(svc.put(resource, LDP.RDFSource, dataset).get());
+        assertFalse(svc.put(existing, LDP.NonRDFSource, dataset).get());
+        assertFalse(svc.put(unwritable, LDP.Container, dataset).get());
         verify(mockEventService, times(0)).emit(any(Notification.class));
     }
 
@@ -236,8 +236,8 @@ public class AbstractResourceServiceTest {
         dataset.add(rdf.createQuad(Trellis.PreferAudit, rdf.createBlankNode(), type, AS.Delete));
 
         final ResourceService svc = new MyResourceService(curator.getConnectString(), mockEventService, null);
-        assertFalse(svc.put(resource, null, dataset).get());
-        assertTrue(svc.put(existing, null, dataset).get());
+        assertFalse(svc.put(resource, LDP.Container, dataset).get());
+        assertTrue(svc.put(existing, LDP.RDFSource, dataset).get());
         assertFalse(svc.put(unwritable, null, dataset).get());
         verify(mockEventService).emit(notificationCaptor.capture());
         assertEquals(of(rdf.createIRI("http://example.com/repository/existing")),
@@ -300,7 +300,6 @@ public class AbstractResourceServiceTest {
 
         final Dataset dataset = rdf.createDataset();
         dataset.add(rdf.createQuad(Trellis.PreferUserManaged, locked, DC.title, rdf.createLiteral("A title")));
-
         final ResourceService svc = new MyResourceService(curator.getConnectString(), mockEventService, mockLock);
         assertTrue(svc.put(resource, null, dataset).get());
         assertTrue(svc.put(existing, null, dataset).get());

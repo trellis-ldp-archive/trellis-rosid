@@ -238,15 +238,6 @@ public class FileResourceServiceTest {
     }
 
     @Test
-    public void testWriteResourceWrongLocation() throws Exception {
-        final Dataset data = rdf.createDataset();
-        data.add(rdf.createQuad(Trellis.PreferUserManaged, testResource, DC.title, rdf.createLiteral("A title")));
-        data.add(rdf.createQuad(Trellis.PreferServerManaged, testResource, type, LDP.RDFSource));
-
-        assertFalse(service.put(rdf.createIRI("trellis:foo/bar"), LDP.RDFSource, data).get());
-    }
-
-    @Test
     public void testVersionedResource() {
         final Instant time = parse("2017-02-16T11:15:03Z");
         final Resource res = service.get(identifier, time).get();

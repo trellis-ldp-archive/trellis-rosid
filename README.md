@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/trellis-ldp/trellis-rosid.png?branch=master)](https://travis-ci.org/trellis-ldp/trellis-rosid)
 [![Build status](https://ci.appveyor.com/api/projects/status/i1geqkvi48w5y9om?svg=true)](https://ci.appveyor.com/project/acoburn/trellis-rosid)
 [![Coverage Status](https://coveralls.io/repos/github/trellis-ldp/trellis-rosid/badge.svg?branch=master)](https://coveralls.io/github/trellis-ldp/trellis-rosid?branch=master)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.trellisldp/trellis-rosid-app/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.trellisldp/trellis-rosid-app/)
 
 This is an implementation of the Trellis Linked Data API, using a file-based persistence and internal Kafka event bus.
 

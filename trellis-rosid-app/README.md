@@ -1,6 +1,6 @@
 # Trellis Application
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.trellisldp/trellis-app/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.trellisldp/trellis-app/)
+A deployable Trellis application using a file-based persistence layer and an internal Kafka-based event bus.
 
 ## Requirements
 

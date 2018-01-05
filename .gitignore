@@ -1,6 +1,6 @@
 .gradle
 build
-*/docs/*-SNAPSHOT
+*/docs/*
 /bin/
 .classpath
 .project

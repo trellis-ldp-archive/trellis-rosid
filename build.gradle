@@ -15,11 +15,9 @@ allprojects {
         jacocoVersion = '0.8.0'
     }
 
-
     jacoco {
         toolVersion = jacocoVersion
     }
-
 
     group = 'org.trellisldp'
 
@@ -27,9 +25,10 @@ allprojects {
         jcenter()
         mavenCentral()
         mavenLocal()
-        maven {
-            url "https://oss.sonatype.org/content/repositories/snapshots"
-        }
+        // Enable snapshot repositories only when needed
+        //maven {
+        //    url "https://oss.sonatype.org/content/repositories/snapshots"
+        //}
     }
 
     gradle.projectsEvaluated {
@@ -65,7 +64,7 @@ subprojects {
         license = 'Apache 2'
 
         /* Dependencies */
-        trellisVersion = '0.5.1-SNAPSHOT'
+        trellisVersion = '0.5.1'
 
         commonsCodecVersion = '1.11'
         commonsIoVersion = '2.6'

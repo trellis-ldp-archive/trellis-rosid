@@ -313,10 +313,6 @@ final class RDFPatch {
             return line.startsWith(ADD) || line.startsWith(DELETE);
         }
 
-        private static Boolean shouldContinue(final String line, final Boolean complete) {
-            return nonNull(line) && !complete;
-        }
-
         private Instant getModifiedIfInRange(final String line) {
             final Instant modified = modifiedToInstant(line);
             if (nonNull(modified) && !time.isBefore(modified.truncatedTo(MILLIS))) {
@@ -327,7 +323,7 @@ final class RDFPatch {
 
         private Iterator<Quad> readPatch() {
             Boolean complete = false;
-            while (shouldContinue(line, complete)) {
+            while (nonNull(line) && !complete) {
                 if (line.startsWith(MODIFIED_HEADER)) {
                     final Instant modified = getModifiedIfInRange(line);
                     if (nonNull(modified)) {

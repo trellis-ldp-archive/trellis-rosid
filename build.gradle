@@ -64,7 +64,7 @@ subprojects {
         license = 'Apache 2'
 
         /* Dependencies */
-        trellisVersion = '0.5.1'
+        trellisVersion = '0.5.2'
 
         commonsCodecVersion = '1.11'
         commonsIoVersion = '2.6'
